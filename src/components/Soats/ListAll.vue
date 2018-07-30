@@ -2,9 +2,19 @@
   v-container(fluid grid-list-xl)
     v-layout(wrap align-center)
       v-flex(xs12 sm6 d-flex)
-        div
+        v-card
+          v-card-title.headline Soats
+            v-spacer
+            v-text-field(
+              v-model="table.search"
+              append-icon="search"
+              label="Buscar"
+              single-line
+              hide-details
+              )
           v-data-table.elevation-1(
             :headers="table.headers"
+            :search="table.search"
             :items="soats"
             hide-actions
             :pagination.sync="table.pagination"
@@ -31,7 +41,7 @@
 </template>
 
 <script>
-import api from '../../api'
+import api from '@/api'
 
 export default {
   data () {
@@ -39,16 +49,18 @@ export default {
       table: {
         headers: [
           { text: 'Vencimiento', value: 'exp' },
-          { text: 'Cliente', value: 'name' },
+          { text: 'Cliente', value: 'client.name' },
           { text: 'Placa', value: 'patent' }
         ],
-        pagination: {}
+        pagination: {},
+        search: ''
       },
       soats: [],
       dialog: {
         primary: null,
         secondary: null,
-        activate: false
+        activate: false,
+        data: null
       }
     }
   },

@@ -77,10 +77,13 @@ export default {
 
   methods: {
     fetch: function (id) {
-      api.get('/api/soats/' + id)
+      api.get('/api/soats/' + id + '?with=expanded')
         .then(({data}) => {
-          // console.log(data);
+          // console.log(data)
           this.data = data
+        })
+        .catch((res) => {
+          console.log('error fetch: ', res)
         })
     },
 

@@ -2,9 +2,19 @@
   v-container(fluid grid-list-xl)
     v-layout(wrap align-center)
       v-flex(xs12 sm6 d-flex)
-        div
+        v-card
+          v-card-title.headline Clientes
+            v-spacer
+            v-text-field(
+              v-model="table.search"
+              append-icon="search"
+              label="Buscar"
+              single-line
+              hide-details
+              )
           v-data-table.elevation-1(
             :headers="table.headers"
+            :search="table.search"
             :items="clients"
             hide-actions
             :pagination.sync="table.pagination"
@@ -16,7 +26,7 @@
               td.text-xs-right(
                 :class="docClass(props.item)"
                 ) {{ props.item.doc | cc }}
-              td.text-xs-right {{ props.item.clientable_type === 'App\\Person' ? 'Persona' : 'Empresa' }}
+              td.text-xs-right {{ props.item.type === 'natural' ? 'Persona' : 'Empresa' }}
               td
                 a(@click="$emit('showClient', props.item.id)") {{ props.item.name }}
           v-pagination(
@@ -27,7 +37,7 @@
 </template>
 
 <script>
-import api from '../../api'
+import api from '@/api'
 
 export default {
   data () {
@@ -35,10 +45,11 @@ export default {
       table: {
         headers: [
           { text: 'Documento', value: 'doc' },
-          { text: 'Tipo', value: 'clientable_type' },
+          { text: 'Tipo', value: 'type' },
           { text: 'Nombre', value: 'name' }
         ],
-        pagination: {}
+        pagination: {},
+        search: ''
       },
       sel: null,
       clients: [],

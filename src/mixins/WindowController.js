@@ -28,7 +28,7 @@ export default {
     }
   },
 
-  created () {
-    this.window.current = this.defaultWindow || null
+  beforeMount () {
+    this.window.current = this.viewProp || this.defaultWindow
   }
 }

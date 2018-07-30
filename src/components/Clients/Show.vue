@@ -73,7 +73,7 @@ export default {
 
   methods: {
     getClient () {
-      api.get('/api/clients/' + this.clientid)
+      api.get('/api/clients/' + this.clientid + '?with=expanded')
         .then(({data}) => {
           console.log(JSON.parse(JSON.stringify(data)))
           this.data = data

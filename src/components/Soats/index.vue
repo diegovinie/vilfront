@@ -15,7 +15,7 @@
 import ListAll from './ListAll'
 import Show from './Show'
 
-import windowController from '../../mixins/WindowController'
+import windowController from '@/mixins/WindowController'
 
 export default {
   mixins: [
