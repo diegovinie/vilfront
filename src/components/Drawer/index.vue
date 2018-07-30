@@ -30,7 +30,7 @@ export default {
   },
 
   computed: {
-    active (a) {
+    active () {
       return this.status
     }
   },

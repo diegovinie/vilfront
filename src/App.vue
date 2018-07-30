@@ -31,12 +31,9 @@ export default {
 
   data () {
     return {
-      drawer: null
+      drawer: false,
+      defaultWindow: 'Clients'
     }
-  },
-
-  created () {
-    this.window.current = 'Clients'
   }
 }
 </script>

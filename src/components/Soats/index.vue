@@ -24,7 +24,8 @@ export default {
 
   data () {
     return {
-      soatid: null
+      soatid: null,
+      defaultWindow: 'ListAll'
     }
   },
 
@@ -46,7 +47,6 @@ export default {
   },
 
   created () {
-    this.window.current = this.viewProp || 'ListAll'
     this.soatid = this.dataProp || null
   }
 }

@@ -24,7 +24,8 @@ export default {
 
   data () {
     return {
-      clientid: null
+      clientid: null,
+      defaultWindow: 'ListAll'
     }
   },
 
@@ -47,7 +48,6 @@ export default {
   },
 
   created () {
-    this.window.current = this.viewProp || 'ListAll'
     this.clientid = this.dataProp || null
   }
 }

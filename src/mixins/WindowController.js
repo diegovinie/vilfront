@@ -26,5 +26,9 @@ export default {
       win.prev = win.current
       win.current = prev
     }
+  },
+
+  created () {
+    this.window.current = this.defaultWindow || null
   }
 }
